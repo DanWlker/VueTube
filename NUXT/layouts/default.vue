@@ -165,7 +165,8 @@ export default {
   methods: {
     textChanged() {
       this.$youtube.autoComplete(this.text, (res) => {
-        const data = res.replace(/^.*?\(/,'').replace(/\)$/,''); //Format Response
+        let IsoToUtf = unescape(encodeURIComponent(res));
+        const data = IsoToUtf.replace(/^.*?\(/,'').replace(/\)$/,''); //Format Response
         this.response = JSON.parse(data)[1]
       });
     },
